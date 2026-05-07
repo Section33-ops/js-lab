@@ -7,7 +7,7 @@
   </head>
   <body>
     <script>
-      let computerNumber = Math.floor(Math.random() * 100);
+      let computerNumber = Math.floor(Math.random() * 100 + 1);
       let playerLive = 7;
 
       while (playerLive > 0) {
@@ -28,15 +28,16 @@
           alert(`Mmmm. Higher.`);
           console.log("Mmmm. Higher");
           playerLive--;
-        } else if (playerLive === 0) {
-          alert(
-            `OOOh! You are out of lives. You had ${playerLive} chances! The number was ${computerNumber}`,
-          );
-          console.log(
-            `OOOh! You are out of lives. You had ${playerLive} chances!`,
-          );
-          break;
         }
+      }
+
+      if (playerLive === 0) {
+        alert(
+          `OOOh! You are out of lives. You had ${playerLive} chances! The number was ${computerNumber}`,
+        );
+        console.log(
+          `OOOh! You are out of lives. You had ${playerLive} chances!`,
+        );
       }
 
       // console.log(`User guess: ${usrGuess}`);
