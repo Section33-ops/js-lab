@@ -1,0 +1,37 @@
+<!doctype html>
+<html lang="en">
+  <head>
+    <meta charset="UTF-8" />
+    <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+    <title>Number Duel</title>
+  </head>
+  <body>
+    <script>
+      let computerNumber = Math.floor(Math.random() * 100);
+      let playerLive = 7;
+
+      let usrGuess = prompt("Guess a number(1 - 100): ");
+      if (usrGuess == computerNumber) {
+        alert("Wow! You got it!");
+        console.log("Wow! You got it!");
+      } else if (usrGuess > computerNumber) {
+        alert(`Mmmm. Lower!`);
+        console.log("Mmmm. Lower!");
+        playerLive--;
+      } else if (usrGuess < computerNumber) {
+        alert(`Mmmm. Higher.`);
+        console.log("Mmmm. Higher");
+        playerLive--;
+      } else if (playerLive === 0) {
+        alert(`OOOh! You are out of lives. You had ${playerLive} chances!`);
+        console.log(
+          `OOOh! You are out of lives. You had ${playerLive} chances!`,
+        );
+      }
+
+      console.log(`User guess: ${usrGuess}`);
+      console.log(`Computer choise: ${computerNumber}`);
+      console.log(`Player lives: ${playerLive}`);
+    </script>
+  </body>
+</html>
