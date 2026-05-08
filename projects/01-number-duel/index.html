@@ -9,9 +9,15 @@
     <script>
       let computerNumber = Math.floor(Math.random() * 100 + 1);
       let playerLive = 7;
+      let hasPlayerWon = false;
 
-      while (playerLive > 0) {
+      function askUsrGuess() {
         let usrGuess = Number(prompt("Guess a number(1 - 100): "));
+        return usrGuess;
+      }
+
+      function checkUsrGuess() {
+        let usrGuess = askUsrGuess();
 
         if (isNaN(usrGuess)) {
           alert("Please enter a number :)");
@@ -19,7 +25,7 @@
         } else if (usrGuess === computerNumber) {
           alert("Wow! You got it!");
           console.log("Wow! You got it!");
-          break;
+          hasPlayerWon = true;
         } else if (usrGuess > computerNumber) {
           alert(`Mmmm. Lower!`);
           console.log("Mmmm. Lower!");
@@ -28,6 +34,13 @@
           alert(`Mmmm. Higher.`);
           console.log("Mmmm. Higher");
           playerLive--;
+        }
+      }
+
+      while (playerLive > 0) {
+        checkUsrGuess();
+        if (hasPlayerWon) {
+          break;
         }
       }
 
