@@ -12,29 +12,25 @@
         balance: 10000,
         isLocked: false,
         deposit(amount) {
-          if (!myWallet.isLocked) {
-            myWallet.balance += amount;
-            return myWallet.balance;
+          if (!this.isLocked) {
+            this.balance += amount;
+            return this.balance;
           } else {
             return "Your account is locked";
           }
         },
         withDraw(amount) {
-          if (!myWallet.isLocked && amount <= myWallet.balance) {
-            myWallet.balance -= amount;
-            return myWallet.balance;
-          } else if (!myWallet.isLocked && amount > myWallet.balance) {
-            console.log("Not enough balance");
-          } else if (myWallet.isLocked) {
-            console.log("Your acoount is locked");
+          if (!this.isLocked && amount <= this.balance) {
+            this.balance -= amount;
+            return this.balance;
+          } else if (!this.isLocked && amount > this.balance) {
+            return "Not enough balance";
+          } else if (this.isLocked) {
+            return "Your acoount is locked";
           }
         },
         toggleLock() {
-          if (myWallet.isLocked === true) {
-            return (myWallet.isLocked = false);
-          } else {
-            return (myWallet.isLocked = true);
-          }
+          this.isLocked = !this.isLocked;
         },
       };
 
