@@ -6,6 +6,49 @@
     <title>Digital Wallet</title>
   </head>
   <body>
-    <script></script>
+    <script>
+      const myWallet = {
+        owner: "John Doe",
+        balance: 10000,
+        isLocked: false,
+        deposit(amount) {
+          if (!myWallet.isLocked) {
+            myWallet.balance += amount;
+            return myWallet.balance;
+          } else {
+            return "Your account is locked";
+          }
+        },
+        withDraw(amount) {
+          if (!myWallet.isLocked && amount <= myWallet.balance) {
+            myWallet.balance -= amount;
+            return myWallet.balance;
+          } else if (!myWallet.isLocked && amount > myWallet.balance) {
+            console.log("Not enough balance");
+          } else if (myWallet.isLocked) {
+            console.log("Your acoount is locked");
+          }
+        },
+        toggleLock() {
+          if (myWallet.isLocked === true) {
+            return (myWallet.isLocked = false);
+          } else {
+            return (myWallet.isLocked = true);
+          }
+        },
+      };
+
+      console.log(`Owner: ${myWallet.owner}`);
+      console.log(`Balance: ${myWallet.balance}`);
+      console.log(`isLocked: ${myWallet.isLocked}`);
+      console.log(myWallet.deposit(250));
+      console.log(myWallet.withDraw(250));
+
+      console.log(myWallet.toggleLock());
+      console.log(`Balance: ${myWallet.balance}`);
+      console.log(`isLocked: ${myWallet.isLocked}`);
+      console.log(myWallet.deposit(250));
+      console.log(myWallet.withDraw(250));
+    </script>
   </body>
 </html>
