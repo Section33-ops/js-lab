@@ -6,6 +6,26 @@
     <title>JS Objects</title>
   </head>
   <body>
-    <script></script>
+    <script>
+      const devloper1 = {
+        name: "John Doe",
+        age: 15,
+        skills: {
+          language1: "html",
+          language2: "css",
+          language3: "javascript",
+        },
+      };
+
+      console.log(
+        `Our developer is ${devloper1.name}. He is ${devloper1.age}. He is proficient in ${devloper1.skills.language1}, ${devloper1.skills.language2}, ${devloper1.skills.language3}`,
+      );
+
+      devloper1.age = 16;
+      devloper1.location = "Columbus";
+      console.log(
+        `Update: Our developer is ${devloper1.name}. He is ${devloper1.age}. He is proficient in ${devloper1.skills.language1}, ${devloper1.skills.language2}, ${devloper1.skills.language3}. He lives in ${devloper1.location}`,
+      );
+    </script>
   </body>
 </html>
