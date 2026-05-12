@@ -7,7 +7,77 @@
   </head>
   <body>
     <script>
-      const homeHub = {};
+      const homeHub = {
+        homeName: "Saeed's Smart Hub",
+        securityLevel: "High",
+        isEnergySaverMode: false,
+        devices: {
+          livingRoomLight: {
+            isOn: true,
+            energyUsage: 10,
+          },
+          airConditioner: {
+            isOn: true,
+            energyUsage: 50,
+          },
+          securityCamera: {
+            isOn: false,
+            energyUsage: 5,
+          },
+        },
+        toggleEnergySaver() {
+          this.isEnergySaverMode = !this.isEnergySaverMode;
+
+          if (this.isEnergySaverMode === true) {
+            if (this.devices.airConditioner.energyUsage > 20) {
+              this.devices.airConditioner.isOn = false;
+            }
+            return "Energy saver on. High power devices turned off.";
+          } else {
+            return "Energy saver is off";
+          }
+        },
+        calculateTotalUsage() {
+          let totalUsage = 0;
+
+          if (this.devices.livingRoomLight.isOn) {
+            totalUsage += this.devices.livingRoomLight.energyUsage;
+          }
+          if (this.devices.airConditioner.isOn) {
+            totalUsage += this.devices.airConditioner.energyUsage;
+          }
+          if (this.devices.securityCamera.isOn) {
+            totalUsage += this.devices.securityCamera.energyUsage;
+          }
+          return `Total energy usage: ${totalUsage} units.`;
+        },
+        securityCheck() {
+          if (this.securityLevel === "High") {
+            this.devices.securityCamera.isOn = true;
+            return "Security Alert: Camera activated!";
+          }
+        },
+      };
+
+      console.log(`Home name: ${homeHub.homeName}`);
+      console.log(`Security Level: ${homeHub.securityLevel}`);
+      console.log(`Security Cam: ${homeHub.devices.securityCamera.isOn}`);
+      console.log(`Air Conditioner: ${homeHub.devices.airConditioner.isOn}`);
+      console.log(`Living room light: ${homeHub.devices.livingRoomLight.isOn}`);
+      console.log(homeHub.calculateTotalUsage());
+
+      console.log(homeHub.toggleEnergySaver());
+      console.log(`isEnergySaverMode: ${homeHub.isEnergySaverMode}`);
+      console.log(`Air Conditioner: ${homeHub.devices.airConditioner.isOn}`);
+      console.log(homeHub.calculateTotalUsage());
+
+      console.log(homeHub.securityCheck());
+
+      console.log(homeHub.toggleEnergySaver());
+      console.log(`isEnergySaverMode: ${homeHub.isEnergySaverMode}`);
+
+      console.log(`Security Cam: ${homeHub.devices.securityCamera.isOn}`);
+      console.log(homeHub.calculateTotalUsage());
     </script>
   </body>
 </html>
