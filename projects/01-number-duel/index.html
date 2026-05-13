@@ -6,52 +6,78 @@
     <title>Number Duel</title>
   </head>
   <body>
+    <input type="number" class="js-input" />
+
+    <button onclick="checkUsrGuess()">Guess</button>
+    <p class="js-feedback"></p>
+    <p class="js-lives-feedback">Lives: 7</p>
     <script>
       let computerNumber = Math.floor(Math.random() * 100 + 1);
       let playerLive = 7;
       let hasPlayerWon = false;
+      // function getUsrGuess() {
+      //   let input = Number(document.querySelector(".input").value);
 
-      function askUsrGuess() {
-        let usrGuess = Number(prompt("Guess a number(1 - 100): "));
-        return usrGuess;
-      }
+      //   console.log(input);
+      //   return input;
+      // }
+      // function askUsrGuess() {
+      //   let usrGuess = Number(prompt("Guess a number(1 - 100): "));
+      //   return usrGuess;
+      // }
 
       function checkUsrGuess() {
-        let usrGuess = askUsrGuess();
+        // let usrGuess = getUsrGuess();
+        let input = Number(document.querySelector(".js-input").value);
+        console.log(input);
 
-        if (isNaN(usrGuess)) {
-          alert("Please enter a number :)");
-          console.log("Please enter a number :)");
-        } else if (usrGuess === computerNumber) {
-          alert("Wow! You got it!");
+        // if (isNaN(input)) {
+        //   // alert("Please enter a number :)");
+        //   document.querySelector(".js-feedback").innerHTML =
+        //     "Please enter a number :)";
+        //   console.log("Please enter a number :)");
+        // }
+        if (playerLive === 0 || hasPlayerWon === true) {
+          return;
+        } else if (input === computerNumber) {
+          // alert("Wow! You got it!");
+          document.querySelector(".js-feedback").innerHTML = "Wow! You got it!";
           console.log("Wow! You got it!");
+          document.querySelector(".js-lives-feedback").innerHTML =
+            `You Win! You have ${playerLive} lives left`;
+
           hasPlayerWon = true;
-        } else if (usrGuess > computerNumber) {
-          alert(`Mmmm. Lower!`);
+        } else if (input > computerNumber) {
+          // alert(`Mmmm. Lower!`);
+          document.querySelector(".js-feedback").innerHTML = "Mmmm. Lower!";
           console.log("Mmmm. Lower!");
           playerLive--;
-        } else if (usrGuess < computerNumber) {
-          alert(`Mmmm. Higher.`);
+
+          document.querySelector(".js-lives-feedback").innerHTML =
+            `Lives: ${playerLive}`;
+        } else if (input < computerNumber) {
+          // alert(`Mmmm. Higher.`);
+          document.querySelector(".js-feedback").innerHTML = "Mmmm. Higher";
           console.log("Mmmm. Higher");
           playerLive--;
+          document.querySelector(".js-lives-feedback").innerHTML =
+            `Lives: ${playerLive}`;
+        }
+        if (playerLive === 0 && !hasPlayerWon) {
+          document.querySelector(".js-feedback").innerHTML =
+            `OOOh! You are out of lives. You had ${playerLive} chances! The number was ${computerNumber}`;
+          console.log(
+            `OOOh! You are out of lives. You had ${playerLive} chances!`,
+          );
         }
       }
 
-      while (playerLive > 0) {
-        checkUsrGuess();
-        if (hasPlayerWon) {
-          break;
-        }
-      }
-
-      if (playerLive === 0) {
-        alert(
-          `OOOh! You are out of lives. You had ${playerLive} chances! The number was ${computerNumber}`,
-        );
-        console.log(
-          `OOOh! You are out of lives. You had ${playerLive} chances!`,
-        );
-      }
+      // while (playerLive > 0) {
+      //   checkUsrGuess();
+      //   if (hasPlayerWon) {
+      //     break;
+      //   }
+      // }
 
       // console.log(`User guess: ${usrGuess}`);
       // console.log(`Computer choise: ${computerNumber}`);
