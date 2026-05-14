@@ -13,6 +13,9 @@
     <button onclick="checkUsrGuess()">Guess</button>
     <p class="js-feedback"></p>
     <p class="js-lives-feedback">Lives: 7</p>
+
+    <button onclick="resetScore()">Reset Total Wins</button>
+
     <script>
       let computerNumber = Math.floor(Math.random() * 100 + 1);
       console.log(computerNumber);
@@ -31,6 +34,13 @@
       //   let usrGuess = Number(prompt("Guess a number(1 - 100): "));
       //   return usrGuess;
       // }
+
+      function resetScore() {
+        totalWins = 0;
+        localStorage.setItem("duelWins", totalWins);
+        document.querySelector(".js-total-wins").innerHTML =
+          `Total Wins: ${totalWins}`;
+      }
 
       function checkUsrGuess() {
         // let usrGuess = getUsrGuess();
