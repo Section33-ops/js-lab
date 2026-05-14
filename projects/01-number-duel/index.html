@@ -6,6 +6,8 @@
     <title>Number Duel</title>
   </head>
   <body>
+    <p class="js-total-wins"></p>
+
     <input type="number" class="js-input" />
 
     <button onclick="checkUsrGuess()">Guess</button>
@@ -13,8 +15,12 @@
     <p class="js-lives-feedback">Lives: 7</p>
     <script>
       let computerNumber = Math.floor(Math.random() * 100 + 1);
+      console.log(computerNumber);
       let playerLive = 7;
       let hasPlayerWon = false;
+      let totalWins = Number(localStorage.getItem("duelWins")) || 0;
+      document.querySelector(".js-total-wins").innerHTML =
+        `Total Wins: ${totalWins}`;
       // function getUsrGuess() {
       //   let input = Number(document.querySelector(".input").value);
 
@@ -41,10 +47,15 @@
           return;
         } else if (input === computerNumber) {
           // alert("Wow! You got it!");
+          totalWins++;
+          localStorage.setItem("duelWins", totalWins);
           document.querySelector(".js-feedback").innerHTML = "Wow! You got it!";
           console.log("Wow! You got it!");
           document.querySelector(".js-lives-feedback").innerHTML =
             `You Win! You have ${playerLive} lives left`;
+
+          document.querySelector(".js-total-wins").innerHTML =
+            `Total Wins: ${totalWins}`;
 
           hasPlayerWon = true;
         } else if (input > computerNumber) {
