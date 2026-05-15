@@ -15,6 +15,7 @@
     <p class="js-lives-feedback">Lives: 7</p>
 
     <button onclick="resetScore()">Reset Total Wins</button>
+    <button onclick="playAgain()">Play Again</button>
 
     <script>
       let computerNumber = Math.floor(Math.random() * 100 + 1);
@@ -34,6 +35,17 @@
       //   let usrGuess = Number(prompt("Guess a number(1 - 100): "));
       //   return usrGuess;
       // }
+
+      function playAgain() {
+        computerNumber = Math.floor(Math.random() * 100 + 1);
+        console.log(computerNumber);
+        playerLive = 7;
+        hasPlayerWon = false;
+        document.querySelector(".js-lives-feedback").innerHTML =
+          `Lives: ${playerLive}`;
+        document.querySelector(".js-feedback").innerHTML = ``;
+        document.querySelector(".js-input").value = ``;
+      }
 
       function resetScore() {
         totalWins = 0;
@@ -70,7 +82,10 @@
           hasPlayerWon = true;
         } else if (input > computerNumber) {
           // alert(`Mmmm. Lower!`);
-          document.querySelector(".js-feedback").innerHTML = "Mmmm. Lower!";
+          document.querySelector(".js-feedback").innerHTML =
+            `Mmmm. Lower! You guessed ${input}`;
+          document.querySelector(".js-input").value = ``;
+
           console.log("Mmmm. Lower!");
           playerLive--;
 
@@ -78,7 +93,10 @@
             `Lives: ${playerLive}`;
         } else if (input < computerNumber) {
           // alert(`Mmmm. Higher.`);
-          document.querySelector(".js-feedback").innerHTML = "Mmmm. Higher";
+          document.querySelector(".js-feedback").innerHTML =
+            `Mmmm. Higher. You guessed ${input}`;
+          document.querySelector(".js-input").value = ``;
+
           console.log("Mmmm. Higher");
           playerLive--;
           document.querySelector(".js-lives-feedback").innerHTML =
