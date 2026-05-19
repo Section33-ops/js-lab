@@ -15,7 +15,7 @@ function processCargo(batch) {
     // console.log(cargo);
     if (cargo.weight >= 50) {
       heavyCargo.push(cargo);
-    } else if (cargo.weight < 50 && cargo.destination === "Cleveland") {
+    } else if (cargo.destination === "Cleveland") {
       expressCargo.push(cargo);
     } else {
       standardCargo.push(cargo);
