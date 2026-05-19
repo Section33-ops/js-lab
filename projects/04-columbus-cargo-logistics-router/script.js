@@ -8,8 +8,10 @@ function processCargo(batch) {
   let heavyCargo = [];
   let expressCargo = [];
   let standardCargo = [];
+  let totalWeight = 0;
 
   for (const cargo of batch) {
+    totalWeight += cargo.weight;
     // console.log(cargo);
     if (cargo.weight >= 50) {
       heavyCargo.push(cargo);
@@ -23,6 +25,7 @@ function processCargo(batch) {
   console.log(`Heavy Cargo: ${heavyCargo.length}`);
   console.log(`Express Cargo: ${expressCargo.length}`);
   console.log(`Standard Cargo: ${standardCargo.length}`);
+  console.log(`Total Weight: ${totalWeight}`);
 }
 
 processCargo(cargoBatch);
