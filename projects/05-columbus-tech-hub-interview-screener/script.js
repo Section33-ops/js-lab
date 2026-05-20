@@ -16,11 +16,10 @@ function findJavaScriptDevs(candidateList) {
 
     for (let j = 0; j < candidateSkills.length; j++) {
       const skill = candidateSkills[j];
-      if (skill != "JavaScript") {
-        continue;
-      } else {
+      if (skill === "JavaScript") {
         console.log(`${candidateName} knows JavaScript`);
         hiredDevs.push(candidateName);
+        break;
       }
     }
   }
