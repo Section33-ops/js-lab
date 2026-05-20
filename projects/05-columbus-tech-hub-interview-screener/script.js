@@ -14,8 +14,8 @@ function findJavaScriptDevs(candidateList) {
     const candidateName = candidate.name;
     const candidateSkills = candidate.skills;
 
-    for (let i = 0; i < candidateSkills.length; i++) {
-      const skill = candidateSkills[i];
+    for (let j = 0; j < candidateSkills.length; j++) {
+      const skill = candidateSkills[j];
       if (skill != "JavaScript") {
         continue;
       } else {
