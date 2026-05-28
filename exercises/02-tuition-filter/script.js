@@ -7,18 +7,34 @@ const studentRoster = [
 
 function processTuition(roster) {
   let actionRequired = [];
-  roster.forEach((student) => {
-    if (student.hasGrant === true) {
-      student.balance -= 1500;
-      if (student.balance > 4000) {
-        actionRequired.push(student.name);
-      }
-    }
-  });
-  console.log(`Action required: ${actionRequired}`);
+  // roster.forEach((student) => {
+  //   if (student.hasGrant === true) {
+  //     student.balance -= 1500;
+  //     if (student.balance > 4000) {
+  //       actionRequired.push(student.name);
+  //     }
+  //   }
+  // });
+  // console.log(`Action required: ${actionRequired}`);
+
+  // const studentsWithGrant = roster
+  //   .filter((student) => student.hasGrant)
+  //   .map((student) => ({ ...student, balance: student.balance - 1500 }));
+
+  const rosterWithProcessedGrants = roster.map((student) =>
+    student.hasGrant
+      ? { ...student, balance: student.balance - 1500 }
+      : { ...student },
+  );
+  console.log(rosterWithProcessedGrants);
+
+  const studentsWithHighBalances = rosterWithProcessedGrants
+    .filter((student) => student.balance > 4000)
+    .map((student) => student.name);
+  console.log(studentsWithHighBalances);
 }
 
-// processTuition(studentRoster);
+processTuition(studentRoster);
 
 // const studentHasGrant = studentRoster.filter((student) => student.hasGrant);
 // console.log(studentHasGrant);
@@ -55,8 +71,8 @@ function processTuition(roster) {
 // );
 // console.log(grantBonus);
 
-// Collection Notice
-const collectNoticeForStudents = studentRoster
-  .filter((student) => student.balance > 4000)
-  .map((student) => `Urgent: ${student.name}, please pay your balance`);
-console.log(collectNoticeForStudents);
+// // Collection Notice
+// const collectNoticeForStudents = studentRoster
+//   .filter((student) => student.balance > 4000)
+//   .map((student) => `Urgent: ${student.name}, please pay your balance`);
+// console.log(collectNoticeForStudents);
