@@ -2,12 +2,11 @@ import { products } from '../../backend-modules/inventoryData.js';
 
 function checkStock(productId) {
   for (const item of products) {
-    if (item.id === productId && item.stock > 0) {
-      return true;
-    } else {
-      return false;
+    if (item.id === productId) {
+      return item.stock > 0;
     }
   }
+  return false;
 }
 
 console.log(checkStock(5));
