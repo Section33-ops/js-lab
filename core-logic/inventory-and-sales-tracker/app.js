@@ -17,9 +17,10 @@ function processSale(productId, quantity) {
       let newStock = item.stock - quantity;
       return `Item stock: ${item.stock}. Quantity: ${quantity}. Current stock: ${newStock}`;
     } else {
-      return 'Error';
+      return 'Error. Not enough stock';
     }
   }
+  return 'Error';
 }
 
 console.log(processSale(1, 2));
