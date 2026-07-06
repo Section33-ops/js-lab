@@ -15,7 +15,7 @@ fetchData();
 async function fetchData() {
   try {
     const response = await fetch(
-      'https://official-joke-api.appspot.com/jokes/programming/rando',
+      'https://official-joke-api.appspot.com/jokes/programming/random',
     );
 
     if (!response.ok) {
